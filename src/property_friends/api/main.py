@@ -7,7 +7,7 @@ from fastapi.security import APIKeyHeader
 
 from property_friends.api.config import APISettings, get_settings
 from property_friends.api.schemas import PredictionRequest, PredictionResponse
-# TODO: Model Service 
+from property_friends.service.model_service import ModelService
 
 API_KEY_HEADER = APIKeyHeader(name="X-API-KEY", auto_error=False) 
 
@@ -25,7 +25,7 @@ def create_app() -> FastAPI:
     """"App factory to create and configure the FastAPI application."""
 
     settings = get_settings()
-    model_service = None  # Placeholder for the model service instance
+    model_service = ModelService(settings.model_path, settings.feature_store_path)
     app = FastAPI(
         title="Property Friends Valuation API",
         description="API for property valuation predictions.",
@@ -35,7 +35,7 @@ def create_app() -> FastAPI:
     @app.on_event("startup")
     async def _load_model() -> None: 
         logger.info("Starting up and loading model...")
-        model_service.load_model() 
+        model_service.load() 
 
     @app.exception_handler(ValueError)
     async def _handle_value_error(_: Request, exc: ValueError) -> JSONResponse:

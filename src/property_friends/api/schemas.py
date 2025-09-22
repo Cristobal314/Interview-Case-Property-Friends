@@ -7,7 +7,7 @@ class PredictionRequest(BaseModel):
     net_usable_area: float = Field(..., description="Net usable area in square meters.")
     net_area: float = Field(..., description="Net area in square meters.")
     n_rooms: int = Field(..., description="Number of rooms.")
-    n_bathrooms: int = Field(..., description="Number of bathrooms.")
+    n_bathroom: int = Field(..., description="Number of bathrooms.")
     latitude: float = Field(..., description="Latitude coordinate of the property.")
     longitude: float = Field(..., description="Longitude coordinate of the property.")
 

@@ -15,7 +15,7 @@ class APISettings(BaseSettings):
         description="API key for authenticating requests.")
     
     class Config: 
-        env_prefix = "PROPERTY_FIENDS_"
+        env_prefix = "PROPERTY_FRIENDS_"
         env_file = ".env"
 
 @lru_cache()

@@ -1,0 +1,19 @@
+target: price 
+categorical_columns:
+  - type
+  - sector
+drop_columns: []
+data_source:
+  type: csv 
+  train_path: data/train.csv
+  test_path: data/test.csv
+model:
+  learning_rate: 0.01
+  n_estimators: 300
+  max_depth: 5 
+  loss: absolute_error
+  random_state: 42
+artifacts_dir: artifacts 
+model_filename: model.joblib 
+metrics_filename: metrics.json 
+feature_store_filename: feature_columns.json

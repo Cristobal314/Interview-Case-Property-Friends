@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "property-friends" 
+version = "0.1.0" 
+description = "Property valuation pipeline and API" 
+authors = [
+ {name = "Cristobal"}
+] 
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "pandas>=1.5,<3", 
+    "numpy>=1.21",
+    "scikit-learn>=1.1",
+    "category-encoders>=2.6",
+    "pydantic>=1.10,<2",
+    "fastapi>=0.95", 
+    "uvicorn[standard]>=0.20",
+    "typer>=0.9", 
+    "python-dotenv>=1.0",
+    "joblib>=1.2", 
+    "loguru>=0.7"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "httpx>=0.24"
+]
+
+[project.scripts]
+property-friends = "property_friends.cli:main"

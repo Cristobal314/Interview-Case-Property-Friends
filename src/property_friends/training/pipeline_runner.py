@@ -43,7 +43,7 @@ def _persist_artifacts(pipeline, features:List[str], metrics:Dict[str, float], c
         json.dump(metrics, f, indent=2)
     logger.info(f"Saved metrics to {config.metrics_path}")
 
-def run_training_pipeline(config: TrainingConfig) -> Dict[str, Dic[str, float]]: 
+def run_training_pipeline(config: TrainingConfig) -> Dict[str, Dict[str, float]]: 
     """Run the full training pipeline: load data, train model, evaluate, and save artifacts.
     Args:
         config: TrainingConfig object with all necessary configuration.

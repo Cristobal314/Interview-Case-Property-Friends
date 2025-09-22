@@ -5,12 +5,17 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-COPY requirements.txt README.md ./ 
+# Copy project files
+COPY pyproject.toml README.md .env ./
 COPY src ./src
 COPY config ./config
 
-RUN pip install --upgrade pip \ 
-    && pip install -r requirements.txt 
+# Install the package and dependencies
+RUN pip install --upgrade pip && \
+    pip install -e .
 
-ENTRYPOINT [ "property-friends" ]
+# Create artifacts directory
+RUN mkdir -p artifacts
+
+ENTRYPOINT ["property-friends"]
 CMD ["--help"]
